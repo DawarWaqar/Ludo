@@ -1,4 +1,4 @@
-const ws = new WebSocket(`ws://localhost:8080/letsPlayLudo`);
+const ws = new WebSocket(`ws://localhost:8080`);
 
 const Ludo = () => {
   const [lBoard, setLBoard] = React.useState([]);
