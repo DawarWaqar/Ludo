@@ -1,0 +1,20 @@
+{
+  "name": "ludo-game",
+  "version": "1.0.0",
+  "description": "Ludo game with WebSocket communication",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "ludo",
+    "game",
+    "websocket",
+    "react"
+  ],
+  "author": "Dawar Waqar",
+  "dependencies": {
+    "ws": "^8.3.0",
+    "http": "^0.0.1-security"
+  }
+}

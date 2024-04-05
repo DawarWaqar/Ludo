@@ -1,0 +1,732 @@
+html {
+  background-color: #D133FF; 
+}
+
+div {
+   height: 5vh
+}
+.game-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.big-letter {
+  position: fixed; 
+  top: 20px;
+  left: 20px;  
+  font-size: 6em;  
+  font-weight: bold;  
+  color: white;
+  animation: blink 2s infinite;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1; 
+  }
+  50% {
+    opacity: 0.25; 
+  }
+  100% {
+    opacity: 1; 
+  }
+}
+
+.big-letter-right {
+  position: fixed;
+  top: 20px;
+  right: 20px; 
+  font-size: 6em;
+  font-weight: bold;
+  color: white;
+  z-index: 1000;
+  animation: blink 2s infinite;
+}
+.footer {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  text-align: center;
+}
+
+.made-by {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+  color: green;
+}
+
+.made-for {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  color: blue;
+}
+
+.heart {
+  font-size: 1.5em;
+  color: red;
+}
+
+.blinkDice {
+  animation: blinkDiceAnimation 1s infinite alternate;
+}
+
+@keyframes blinkDiceAnimation {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.25;
+  }
+}
+
+
+.cell00,
+.cell01,
+.cell02,
+.cell03,
+.cell04,
+.cell05,
+.cell06,
+.cell07,
+.cell08,
+.cell09,
+.cell010,
+.cell011,
+.cell012,
+.cell013,
+.cell014,
+.cell10,
+.cell11,
+.cell12,
+.cell13,
+.cell14,
+.cell15,
+.cell16,
+.cell17,
+.cell18,
+.cell19,
+.cell110,
+.cell111,
+.cell112,
+.cell113,
+.cell114,
+.cell20,
+.cell21,
+.cell22,
+.cell23,
+.cell24,
+.cell25,
+.cell26,
+.cell27,
+.cell28,
+.cell29,
+.cell210,
+.cell211,
+.cell212,
+.cell213,
+.cell214,
+.cell30,
+.cell31,
+.cell32,
+.cell33,
+.cell34,
+.cell35,
+.cell36,
+.cell37,
+.cell38,
+.cell39,
+.cell310,
+.cell311,
+.cell312,
+.cell313,
+.cell314,
+.cell40,
+.cell41,
+.cell42,
+.cell43,
+.cell44,
+.cell45,
+.cell46,
+.cell47,
+.cell48,
+.cell49,
+.cell410,
+.cell411,
+.cell412,
+.cell413,
+.cell414,
+.cell50,
+.cell51,
+.cell52,
+.cell53,
+.cell54,
+.cell55,
+.cell56,
+.cell57,
+.cell58,
+.cell59,
+.cell510,
+.cell511,
+.cell512,
+.cell513,
+.cell514,
+.cell60,
+.cell61,
+.cell62,
+.cell63,
+.cell64,
+.cell65,
+.cell66,
+.cell67,
+.cell68,
+.cell69,
+.cell610,
+.cell611,
+.cell612,
+.cell613,
+.cell614,
+.cell70,
+.cell71,
+.cell72,
+.cell73,
+.cell74,
+.cell75,
+.cell76,
+.cell77,
+.cell78,
+.cell79,
+.cell710,
+.cell711,
+.cell712,
+.cell713,
+.cell714,
+.cell80,
+.cell81,
+.cell82,
+.cell83,
+.cell84,
+.cell85,
+.cell86,
+.cell87,
+.cell88,
+.cell89,
+.cell810,
+.cell811,
+.cell812,
+.cell813,
+.cell814,
+.cell90,
+.cell91,
+.cell92,
+.cell93,
+.cell94,
+.cell95,
+.cell96,
+.cell97,
+.cell98,
+.cell99,
+.cell910,
+.cell911,
+.cell912,
+.cell913,
+.cell914,
+.cell100,
+.cell101,
+.cell102,
+.cell103,
+.cell104,
+.cell105,
+.cell106,
+.cell107,
+.cell108,
+.cell109,
+.cell1010,
+.cell1011,
+.cell1012,
+.cell1013,
+.cell1014,
+.cell110,
+.cell111,
+.cell112,
+.cell113,
+.cell114,
+.cell115,
+.cell116,
+.cell117,
+.cell118,
+.cell119,
+.cell1110,
+.cell1111,
+.cell1112,
+.cell1113,
+.cell1114,
+.cell120,
+.cell121,
+.cell122,
+.cell123,
+.cell124,
+.cell125,
+.cell126,
+.cell127,
+.cell128,
+.cell129,
+.cell1210,
+.cell1211,
+.cell1212,
+.cell1213,
+.cell1214,
+.cell130,
+.cell131,
+.cell132,
+.cell133,
+.cell134,
+.cell135,
+.cell136,
+.cell137,
+.cell138,
+.cell139,
+.cell1310,
+.cell1311,
+.cell1312,
+.cell1313,
+.cell1314,
+.cell140,
+.cell141,
+.cell142,
+.cell143,
+.cell144,
+.cell145,
+.cell146,
+.cell147,
+.cell148,
+.cell149,
+.cell1410,
+.cell1411,
+.cell1412,
+.cell1413,
+.cell1414 {
+  background-color: #fff2c4;
+  display: none;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: inset 0px 0px 0px 0.05px black;
+}
+
+.cell10,
+.cell11,
+.cell12,
+.cell13,
+.cell14,
+.cell15,
+.cell20,
+.cell21,
+.cell22,
+.cell23,
+.cell24,
+.cell25,
+.cell30,
+.cell31,
+.cell32,
+.cell33,
+.cell34,
+.cell35,
+.cell40,
+.cell41,
+.cell42,
+.cell43,
+.cell44,
+.cell45,
+.cell50,
+.cell51,
+.cell52,
+.cell53,
+.cell54,
+.cell55,
+.cell60,
+.cell61,
+.cell62,
+.cell63,
+.cell64,
+.cell65,
+.cell66,
+.cell67,
+.cell68,
+.cell69,
+.cell610,
+.cell611,
+.cell612,
+.cell613,
+.cell614,
+.cell70,
+.cell71,
+.cell72,
+.cell73,
+.cell74,
+.cell75,
+.cell76,
+.cell77,
+.cell78,
+.cell79,
+.cell710,
+.cell711,
+.cell712,
+.cell713,
+.cell714,
+.cell80,
+.cell81,
+.cell82,
+.cell83,
+.cell84,
+.cell85,
+.cell86,
+.cell87,
+.cell88,
+.cell89,
+.cell810,
+.cell811,
+.cell812,
+.cell813,
+.cell814,
+.cell100,
+.cell101,
+.cell102,
+.cell103,
+.cell104,
+.cell105,
+.cell110,
+.cell111,
+.cell112,
+.cell113,
+.cell114,
+.cell115,
+.cell120,
+.cell121,
+.cell122,
+.cell123,
+.cell124,
+.cell125,
+.cell130,
+.cell131,
+.cell132,
+.cell133,
+.cell134,
+.cell135,
+.cell90,
+.cell91,
+.cell92,
+.cell93,
+.cell94,
+.cell95 {
+  background-color: #fff2c4;
+  display: inline-block;
+  width: 5vh;
+  height: 0vh;
+  text-align: center;
+  vertical-align: middle;
+  box-shadow: inset 0px 0px 0px 0.05px black;
+}
+
+.cell00,
+.cell014,
+.cell140,
+.cell1414 {
+  vertical-align: top;
+  padding: 12.5vh;
+  box-shadow: inset 0px 0px 0px 0.05px black;
+  width: 5vh;
+  display: inline-block;
+}
+.cell140,
+.cell1414 {
+  position: relative;
+  top: -25vh;
+}
+
+.cell06,
+.cell07,
+.cell08,
+.cell16,
+.cell17,
+.cell18,
+.cell26,
+.cell27,
+.cell28,
+.cell36,
+.cell37,
+.cell38,
+.cell46,
+.cell47,
+.cell48,
+.cell56,
+.cell57,
+.cell58,
+.cell60,
+.cell61,
+.cell62,
+.cell63,
+.cell64,
+.cell65,
+.cell66,
+.cell67,
+.cell68,
+.cell69,
+.cell610,
+.cell611,
+.cell612,
+.cell613,
+.cell614,
+.cell70,
+.cell71,
+.cell72,
+.cell73,
+.cell74,
+.cell75,
+.cell76,
+.cell77,
+.cell78,
+.cell79,
+.cell710,
+.cell711,
+.cell712,
+.cell713,
+.cell714,
+.cell80,
+.cell81,
+.cell82,
+.cell83,
+.cell84,
+.cell85,
+.cell86,
+.cell87,
+.cell88,
+.cell89,
+.cell810,
+.cell811,
+.cell812,
+.cell813,
+.cell814,
+.cell96,
+.cell97,
+.cell98,
+.cell106,
+.cell107,
+.cell108,
+.cell116,
+.cell117,
+.cell118,
+.cell126,
+.cell127,
+.cell128,
+.cell136,
+.cell137,
+.cell138,
+.cell146,
+.cell147,
+.cell148 {
+  background-color: white;
+  box-shadow: inset 0px 0px 0px 1px black;
+  display: inline-block;
+  height: 5vh;
+  width: 5vh;
+}
+
+div.cell17,
+.cell27,
+.cell37,
+.cell47,
+.cell57,
+.cell67,
+.cell18,
+.cell26 {
+  background-color: #fe2a00;
+}
+
+div.cell78,
+.cell79,
+.cell710,
+.cell711,
+.cell712,
+.cell713,
+.cell813,
+.cell612 {
+  background-color: #02c13e;
+}
+
+div.cell87,
+.cell97,
+.cell107,
+.cell117,
+.cell127,
+.cell137,
+.cell136,
+.cell128 {
+  background-color: #feff00;
+}
+
+div.cell71,
+.cell72,
+.cell73,
+.cell74,
+.cell75,
+.cell76,
+.cell61,
+.cell82 {
+  background-color: #0071f1;
+}
+
+div.cell26 {
+  background-color: #c00000;
+}
+
+div.cell612 {
+  background-color: #00843a;
+}
+
+div.cell128 {
+  background-color: #fed700;
+}
+
+div.cell82 {
+  background-color: #004cbd;
+}
+
+div.cell66 {
+  background-image: linear-gradient(to top right, #0071f1 50%, #fe2a00 50%);
+}
+
+div.cell68 {
+  background-image: linear-gradient(to bottom right, #fe2a00 50%, #02c13e 50%);
+}
+
+div.cell86 {
+  background-image: linear-gradient(to bottom right, #0071f1 50%, #feff00 50%);
+}
+
+div.cell88 {
+  background-image: linear-gradient(to top right, #feff00 50%, #02c13e 50%);
+}
+
+div.cell77 {
+  background-image: url(center.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+div.sprite {
+  width: 2vh;
+  height: 2vh;
+  background-color: white;
+  border-radius: 100%;
+  box-shadow: inset 0px 0px 0px 1px black, 0.3vh 0.3vh 0.5vh black;
+  display: inline-block;
+  filter: brightness(120%);
+}
+
+div.red {
+  width: 2vh;
+  height: 2vh;
+  background-color: white;
+  border-radius: 100%;
+  box-shadow: inset 0px 0px 0px 1px black, 0.3vh 0.3vh 0.5vh black;
+  display: inline-block;
+  filter: brightness(120%);
+  background-color: #fe2a00;
+}
+
+div.blue {
+  width: 2vh;
+  height: 2vh;
+  background-color: white;
+  border-radius: 100%;
+  box-shadow: inset 0px 0px 0px 1px black, 0.3vh 0.3vh 0.5vh black;
+  display: inline-block;
+  filter: brightness(120%);
+  background-color: #0071f1;
+}
+
+div.green {
+  width: 2vh;
+  height: 2vh;
+  background-color: white;
+  border-radius: 100%;
+  box-shadow: inset 0px 0px 0px 1px black, 0.3vh 0.3vh 0.5vh black;
+  display: inline-block;
+  filter: brightness(120%);
+  background-color: #02c13e;
+}
+
+div.yellow {
+  width: 2vh;
+  height: 2vh;
+  background-color: white;
+  border-radius: 100%;
+  box-shadow: inset 0px 0px 0px 1px black, 0.3vh 0.3vh 0.5vh black;
+  display: inline-block;
+  filter: brightness(120%);
+  background-color: #feff00;
+}
+
+div.color:before {
+  color: black;
+  content: "color";
+  font-weight: bold;
+}
+
+div.color {
+  display: block;
+  float: left;
+  width: 10vh;
+  height: 10vh;
+  border-radius: 50%;
+  box-shadow: inset 0px 0px 0px 1.5px black;
+  margin: 1vh 1vh 1vh 1vh;
+  font-size: 3vh;
+  text-align: center;
+  line-height: 10vh;
+}
+
+div.rbgy {
+  background: linear-gradient(
+    to bottom right,
+    #fe2a00 30%,
+    #feff00 30%,
+    #feff00 50%,
+    #02c13e 50%,
+    #02c13e 70%,
+    #0071f1 70%,
+    #0071f1 100%
+  );
+}
+
+div.dice {
+  display: block;
+  float: left;
+  width: 10vh;
+  height: 10vh;
+  background-color: white;
+  border-radius: 10%;
+  box-shadow: inset 0px 0px 0px 1.5px black;
+  margin: 1vh 1vh 1vh 1vh;
+  font-size: 7vh;
+  text-align: center;
+  line-height: 10vh;
+}
+
+div.text_box {
+  display: block;
+  float: left;
+  width: 48vh;
+  height: 8vh;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 0px 1.5px black;
+  margin: 1vh 1vh 1vh 1vh;
+  font-size: 2.5vh;
+  padding: 1vh 1vh 1vh 1vh;
+}
+
+div.text_box:before {
+  color: gray;
+}
