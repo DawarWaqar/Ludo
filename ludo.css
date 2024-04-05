@@ -714,17 +714,20 @@ div.dice {
   line-height: 10vh;
 }
 
+
+
 div.text_box {
-  display: block;
-  float: left;
+  display: flex;
+  justify-content: center; 
+  align-items: center;
   width: 48vh;
   height: 8vh;
   background-color: white;
   border-radius: 10px;
   box-shadow: inset 0px 0px 0px 1.5px black;
-  margin: 1vh 1vh 1vh 1vh;
-  font-size: 2.5vh;
-  padding: 1vh 1vh 1vh 1vh;
+  margin: 1vh;
+  font-size: 3vh;
+  padding: 1vh;
 }
 
 div.text_box:before {

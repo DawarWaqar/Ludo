@@ -11,6 +11,11 @@ const Ludo = () => {
   ws.onmessage = (event) => {
     const clientBoard = JSON.parse(event.data);
 
+    if (clientBoard.type === "error") {
+      setTextBox(clientBoard.message);
+      ws.close();
+    }
+
     if (clientBoard.type === "newboard") {
       setShowDice(false);
       let tempDice = clientBoard.diceNum;
@@ -19,13 +24,14 @@ const Ludo = () => {
       const myTurn = clientBoard.turn == colorClass.split(" ")[1];
       setIsMyTurn(myTurn);
 
-      const textBox = `its ${clientBoard.turn}'s turn. ${
+      const textBox = `Its ${clientBoard.turn}'s turn. ${
         myTurn ? "Roll the dice.." : ""
       }`;
       setTextBox(textBox);
     } else if (clientBoard.type === "color") {
       let tempColor = clientBoard.color;
       setColorClass(tempColor);
+      setTextBox(clientBoard.message);
     } else if (clientBoard.type === "who won") {
       setTextBox(clientBoard.result);
     } else if (clientBoard.type === "show dice") {
@@ -64,7 +70,7 @@ const Ludo = () => {
     let won = textBox.split(" ")[1];
 
     if (color != turn && color == temp && won != "won") {
-      setTextBox("its not your turn");
+      setTextBox("Its not your turn");
     }
   };
 

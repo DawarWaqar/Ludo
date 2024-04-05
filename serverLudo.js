@@ -221,7 +221,6 @@ const safeSpots = [
   [8, 2],
   [13, 6],
 ];
-const homeSpots = [[], [], [], []];
 let colorArr = ["color green", "color red", "color blue", "color yellow"];
 let clients = [];
 let turnInt = 0;
@@ -229,16 +228,61 @@ let turnDic = { 0: "yellow", 1: "blue", 2: "red", 3: "green" };
 let checkL = true;
 let diceNum = Math.floor(Math.random() * 6) + 1;
 wss.on(`connection`, (ws) => {
-  clients.push(ws);
+  if (clients.length == 4) {
+    ws.send(
+      JSON.stringify({
+        type: "error",
+        message: "The game room is full. Please try again later.",
+      })
+    );
+    ws.close();
+    return;
+  }
+
   console.log(`A user connected`);
+  clients.push(ws);
   ws.send(
     JSON.stringify({
       type: "color",
       color: colorArr.pop(),
+      message: "Waiting for other players..",
     })
   );
 
+  if (clients.length == 4) {
+    //start new game
+    clients.forEach((client) => {
+      if (client.readyState === WebSocket.OPEN) {
+        client.send(
+          JSON.stringify({
+            type: "newboard",
+            board: state,
+            diceNum: diceNum,
+            turn: turnDic[turnInt],
+          })
+        );
+      }
+    });
+  }
+
   const iskilled = (ox, oy) => (ox - 7) * (ox - 7) + (oy - 7) * (oy - 7) == 98;
+
+  ws.on("close", () => {
+    console.log("A user disconnected");
+
+    clients.forEach((client) => {
+      client.send(
+        JSON.stringify({
+          type: "error",
+          message: "A user has disconnected from the game. Game ended.",
+        })
+      );
+      // }
+      client.close();
+    });
+    clients = [];
+    colorArr = ["color green", "color red", "color blue", "color yellow"];
+  });
 
   ws.on(`message`, (message) => {
     let msg = JSON.parse(message);
@@ -256,14 +300,16 @@ wss.on(`connection`, (ws) => {
       });
     }
     if (type == "switch position") {
+      turnInt = (turnInt + 1) % 4;
+
       let color = msg.color;
       let cellId = msg.cellId;
       cellId = cellId.split(" ");
       let i = parseInt(cellId[0]);
       let i2 = parseInt(cellId[1]);
-      if (iskilled(i, i2) == true) {
+      if (iskilled(i, i2)) {
         //home condition
-        if (diceNum == 6 || diceNum == 1) {
+        if (diceNum == 6) {
           const index = state[i][i2].indexOf(color);
           if (index !== -1) {
             state[i][i2].splice(index, 1);
@@ -288,7 +334,6 @@ wss.on(`connection`, (ws) => {
               );
             }
           });
-          turnInt = (turnInt + 1) % 4;
         } else {
           diceNum = Math.floor(Math.random() * 6) + 1;
           clients.forEach((client) => {
@@ -303,7 +348,6 @@ wss.on(`connection`, (ws) => {
               );
             }
           });
-          turnInt = (turnInt + 1) % 4;
         }
       } else {
         let newPos = step(color, i, i2, diceNum);
@@ -374,7 +418,6 @@ wss.on(`connection`, (ws) => {
                 );
               }
             });
-            turnInt = (turnInt + 1) % 4;
           }
         } else {
           diceNum = Math.floor(Math.random() * 6) + 1;
@@ -390,25 +433,8 @@ wss.on(`connection`, (ws) => {
               );
             }
           });
-          turnInt = (turnInt + 1) % 4;
         }
       }
     }
   });
-  if (colorArr.length == 0 && checkL == true) {
-    clients.forEach((client) => {
-      if (client.readyState === WebSocket.OPEN) {
-        client.send(
-          JSON.stringify({
-            type: "newboard",
-            board: state,
-            diceNum: diceNum,
-            turn: turnDic[turnInt],
-          })
-        );
-      }
-    });
-    turnInt = (turnInt + 1) % 4;
-    checkL = false;
-  }
 });
