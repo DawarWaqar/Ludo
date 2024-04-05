@@ -14,7 +14,7 @@ const readFile = (fileName) =>
   });
 
 const server = http.createServer(async (req, resp) => {
-  if (req.url == `/`) {
+  if (req.url == `/letsPlayLudo`) {
     const clientHtml = await readFile(`clientLudo.html`);
     resp.end(clientHtml);
   } else if (req.url == `/myjs`) {
