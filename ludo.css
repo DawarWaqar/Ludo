@@ -1,5 +1,5 @@
 html {
-  background-color: #D133FF; 
+  background-color: #3B3B3B; 
 }
 
 div {
@@ -54,13 +54,13 @@ div {
 .made-by {
   font-size: 1.5em;
   margin-bottom: 10px;
-  color: green;
+  color: white;
 }
 
 .made-for {
   font-size: 1.2em;
   margin-bottom: 5px;
-  color: blue;
+  color: white;
 }
 
 .heart {
