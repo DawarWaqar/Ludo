@@ -33,7 +33,7 @@ const Ludo = () => {
       setColorClass(tempColor);
       setTextBox(clientBoard.message);
     } else if (clientBoard.type === "who won") {
-      setTextBox(clientBoard.result);
+      setTextBox(`${clientBoard.result}! Game ended`);
     } else if (clientBoard.type === "show dice") {
       setShowDice(true);
     }
@@ -99,7 +99,7 @@ const Ludo = () => {
       <div className="footer">
         <div className="made-by">Made By Dawar Waqar</div>
         <div className="made-for">For The ASE Course</div>
-        <div className="heart">&hearts;</div>
+        {/* <div className="heart">&hearts;</div> */}
       </div>
       <div onClick={handleClick}>
         {lBoard.map((e, i) => {

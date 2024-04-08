@@ -33,6 +33,7 @@ server.listen(8000);
 const wss = new WebSocket.Server({ port: 8080 });
 
 let state = [
+  // initial state
   [
     ["blue", "blue", "blue", "blue"],
     [],
@@ -81,6 +82,73 @@ let state = [
     ["green", "green", "green", "green"],
   ],
 ];
+
+// let state = [
+//   //for going in and kill and winning and safe spots
+//   [
+//     ["blue", "blue"],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     ["red", "red", "red"],
+//   ],
+//   [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
+//   [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
+//   [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
+//   [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
+//   [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
+//   [["red"], ["blue"], [], [], [], [], [], [], [], [], [], [], [], [], []],
+//   [
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     ["green", "green", "green"],
+//     ["green"],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//   ],
+//   [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
+//   [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
+//   [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
+//   [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
+//   [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
+//   [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []],
+//   [
+//     ["yellow", "yellow"],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     ["yellow", "yellow"],
+//     ["blue"],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//     [],
+//   ],
+// ];
 
 const isIncluded = (safeArr, cordArr) => {
   for (let index = 0; index < safeArr.length; index++) {
@@ -211,6 +279,11 @@ const step = (color, ox, oy, steps) => {
     return "not possible";
   }
 };
+
+const generateRandomDiceNum = () => {
+  return Math.floor(Math.random() * 6) + 1;
+  // return 1; //for ones
+};
 const safeSpots = [
   [6, 1],
   [2, 6],
@@ -226,7 +299,7 @@ let clients = [];
 let turnInt = 0;
 let turnDic = { 0: "yellow", 1: "blue", 2: "red", 3: "green" };
 let checkL = true;
-let diceNum = Math.floor(Math.random() * 6) + 1;
+let diceNum = generateRandomDiceNum();
 wss.on(`connection`, (ws) => {
   if (clients.length == 4) {
     ws.send(
@@ -320,7 +393,7 @@ wss.on(`connection`, (ws) => {
 
           state[newPos[0]][newPos[1]].push(color);
 
-          diceNum = Math.floor(Math.random() * 6) + 1;
+          diceNum = generateRandomDiceNum();
 
           clients.forEach((client) => {
             if (client.readyState === WebSocket.OPEN) {
@@ -335,7 +408,7 @@ wss.on(`connection`, (ws) => {
             }
           });
         } else {
-          diceNum = Math.floor(Math.random() * 6) + 1;
+          diceNum = generateRandomDiceNum();
           clients.forEach((client) => {
             if (client.readyState === WebSocket.OPEN) {
               client.send(
@@ -365,6 +438,14 @@ wss.on(`connection`, (ws) => {
               if (client.readyState === WebSocket.OPEN) {
                 client.send(
                   JSON.stringify({
+                    type: "newboard",
+                    board: state,
+                    diceNum: diceNum,
+                    turn: turnDic[turnInt],
+                  })
+                );
+                client.send(
+                  JSON.stringify({
                     type: "who won",
                     result: "yellow won",
                   })
@@ -374,6 +455,14 @@ wss.on(`connection`, (ws) => {
           } else if (state[7][6].length == 4) {
             clients.forEach((client) => {
               if (client.readyState === WebSocket.OPEN) {
+                client.send(
+                  JSON.stringify({
+                    type: "newboard",
+                    board: state,
+                    diceNum: diceNum,
+                    turn: turnDic[turnInt],
+                  })
+                );
                 client.send(
                   JSON.stringify({
                     type: "who won",
@@ -387,6 +476,14 @@ wss.on(`connection`, (ws) => {
               if (client.readyState === WebSocket.OPEN) {
                 client.send(
                   JSON.stringify({
+                    type: "newboard",
+                    board: state,
+                    diceNum: diceNum,
+                    turn: turnDic[turnInt],
+                  })
+                );
+                client.send(
+                  JSON.stringify({
                     type: "who won",
                     result: "red won",
                   })
@@ -398,6 +495,14 @@ wss.on(`connection`, (ws) => {
               if (client.readyState === WebSocket.OPEN) {
                 client.send(
                   JSON.stringify({
+                    type: "newboard",
+                    board: state,
+                    diceNum: diceNum,
+                    turn: turnDic[turnInt],
+                  })
+                );
+                client.send(
+                  JSON.stringify({
                     type: "who won",
                     result: "green won",
                   })
@@ -405,7 +510,7 @@ wss.on(`connection`, (ws) => {
               }
             });
           } else {
-            diceNum = Math.floor(Math.random() * 6) + 1;
+            diceNum = generateRandomDiceNum();
             clients.forEach((client) => {
               if (client.readyState === WebSocket.OPEN) {
                 client.send(
@@ -420,7 +525,7 @@ wss.on(`connection`, (ws) => {
             });
           }
         } else {
-          diceNum = Math.floor(Math.random() * 6) + 1;
+          diceNum = generateRandomDiceNum();
           clients.forEach((client) => {
             if (client.readyState === WebSocket.OPEN) {
               client.send(

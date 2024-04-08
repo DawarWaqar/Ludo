@@ -46,7 +46,7 @@ div {
 }
 .footer {
   position: fixed;
-  bottom: 100px;
+  bottom: 50px;
   right: 30px;
   text-align: center;
 }
