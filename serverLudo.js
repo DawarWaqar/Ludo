@@ -84,7 +84,7 @@ let state = [
 ];
 
 // let state = [
-//   //for going in and kill and winning and safe spots
+//   //for going in + kill + winning + safe spots
 //   [
 //     ["blue", "blue"],
 //     [],

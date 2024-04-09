@@ -63,10 +63,6 @@ div {
   color: white;
 }
 
-.heart {
-  font-size: 1.5em;
-  color: red;
-}
 
 .blinkDice {
   animation: blinkDiceAnimation 1s infinite alternate;

@@ -99,7 +99,6 @@ const Ludo = () => {
       <div className="footer">
         <div className="made-by">Made By Dawar Waqar</div>
         <div className="made-for">For The ASE Course</div>
-        {/* <div className="heart">&hearts;</div> */}
       </div>
       <div onClick={handleClick}>
         {lBoard.map((e, i) => {

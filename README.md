@@ -4,8 +4,8 @@ A funfilled ludo board game from the Indian subcontinent made for extra credit f
 
 ## Rules of the game
 
-https://www.youtube.com/watch?v=xYXj9DwKHr4
-https://en.wikipedia.org/wiki/Ludo
+- https://www.youtube.com/watch?v=xYXj9DwKHr4
+- https://en.wikipedia.org/wiki/Ludo
 
 ## Quick Start Tutorial
 
