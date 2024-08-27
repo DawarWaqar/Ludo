@@ -1,6 +1,8 @@
 # Ludo
 
-A funfilled ludo board game from the Indian subcontinent made for extra credit for a course
+A funfilled multiplayer board game called Ludo made for extra credit for a course. I used JavaScript, WebSocket and CSS to develop this.
+
+![Ludo Readme Image](images/readme-ludo.png)
 
 ## Rules of the game
 
